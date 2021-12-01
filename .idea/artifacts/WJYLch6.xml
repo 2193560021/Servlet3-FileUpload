@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WJYLch6">
+    <output-path>$PROJECT_DIR$/..</output-path>
+    <root id="archive" name="WJYLch6.war">
+      <element id="dir-copy" path="$PROJECT_DIR$/web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="servlet3upload" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="javax.servlet-api-4.0.1" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="servlet3upload/web/Web" />
+    </root>
+  </artifact>
+</component>

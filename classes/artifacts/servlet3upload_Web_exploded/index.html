@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="GB2312">
+    <title>交作业</title>
+  <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css">
+  <script src="jquery-1.12.4.min.js"></script>
+  <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+  <style>
+    #from_main{
+      border-radius: 15px;
+    }
+  </style>
+  <script>
+    function isDocx()
+    {
+      var file=myform.homework.value;
+      var ext=file.substring(file.lastIndexOf(".")+1);
+      //可以再添加允许类型
+      if(ext.toLowerCase()=="pdf")
+        return true;
+      else
+      {
+        alert("只能上传pdf文档!");
+        return false;
+      }
+    }
+  </script>
+</head>
+<body>
+
+<h1 class="font-weight-bolder text-center mt-5">向刘小阳提交微机原理第六章作业</h1>
+<div class="col-md-6 col-sm-12 alert-info container my-5"  id="from_main" >
+  <form name="myform" action="UploadServlet" method="post" enctype="multipart/form-data" class="py-3">
+    <input type="text" id="name" name="name" class="form-control mb-3" placeholder="姓名"  >
+    <input type="text" id="id" name="id" class="form-control mb-3" placeholder="两位学号"  >
+    <input type="file" style="visibility: hidden" id="homework" name="homework"><br>
+    <input type="button" id="btn_select" value="上传文件（不要超过10MB哦）" class="btn btn-success my-2 col-md-12">
+    <span id="file_name"></span>
+    <input type="submit" value="确认（请准确填写信息）" class="btn btn-danger col-md-12 mt-2" style="line-height: 30px;font-size: 20px" onclick="return isDocx()">
+  </form>
+</div>
+<script>
+
+  document.querySelector('#btn_select').addEventListener('click',function () {
+    document.querySelector('#homework').click();
+  });
+  document.querySelector('#homework').onchange = function (){
+    document.getElementById("file_name").innerText = document.querySelector('#homework').value;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css">
+  <script src="jquery-1.12.4.min.js"></script>
+  <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+
+</head>
+<body class="">
+<div class="w-75 mx-auto text-center">
+  <h1 id="main" class=" font-weight-bolder text-center">等<span id="second">10</span>秒再关，文件正在上传，先吃波🐶粮</h1>
+  <img src="http://139.9.140.236:8080/LX/lxlyy.jpg" class="mx-auto" style="height: 650px;" alt="">
+</div>
+<script>
+  window.onload = function (){
+    setInterval(calculate,1000)
+  }
+  function calculate(){
+    document.getElementById("second").innerText = parseInt(parseInt(document.getElementById("second").innerText) - 1);
+    if(document.getElementById("second").innerText == "0"){
+      document.getElementById("main").innerHTML = '<span id="second" hidden></span> 文件上传完毕啦，狗粮也吃完啦，可以关啦'
+    }
+  }
+</script>
+</body>
+</html>
