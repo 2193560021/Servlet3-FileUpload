@@ -1,44 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="GB2312">
-    <title>½»×÷Òµ</title>
+    <meta charset="UTF-8">
+    <title>äº¤ä½œä¸š</title>
   <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css">
   <script src="jquery-1.12.4.min.js"></script>
   <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
   <style>
+    body,html{
+      height: 100%;
+      background-image: -moz-linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
+
+      background-image: -webkit-linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
+
+      background-image: linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
+    }
     #from_main{
       border-radius: 15px;
     }
   </style>
   <script>
+    window.onload = function (){
+      setTimeout(ani1,800)
+    }
     function isDocx()
     {
       var file=myform.homework.value;
       var ext=file.substring(file.lastIndexOf(".")+1);
-      //¿ÉÒÔÔÙÌí¼ÓÔÊĞíÀàĞÍ
+
+      var lxx = document.getElementById("lxx");
+      var onlyPdf = document.getElementById("onlyPdf");
+      if(document.getElementById("id").value == ""){
+
+        lxx.classList.remove("fadeInUp");
+        lxx.classList.add("shake");
+        onlyPdf.classList.add("text-danger");
+        onlyPdf.innerText = 'å“å‘€ï¼Œæ²¡å¡«å­¦å·å‘¢~';
+        setTimeout(removeShake,1000)
+        return false;
+      }
+
+      //å¯ä»¥å†æ·»åŠ å…è®¸ç±»å‹
       if(ext.toLowerCase()=="pdf")
+      {
+        document.getElementById("from_main").classList.remove("fadeInUp");
+        document.getElementById("from_main").classList.add("fadeOutDown");
         return true;
+      }
       else
       {
-        alert("Ö»ÄÜÉÏ´«pdfÎÄµµ!");
+        lxx.classList.remove("fadeInUp");
+        lxx.classList.add("shake");
+        onlyPdf.classList.add("text-danger");
+        onlyPdf.innerText = 'å“å‘€ï¼Œåªèƒ½ä¸Šä¼ pdfæ–‡ä»¶å‘€~';
+        setTimeout(removeShake,1000)
         return false;
       }
     }
+
+    function removeShake(){
+      document.getElementById("lxx").classList.remove("shake");
+    }
+
+    function ani1(){
+      document.getElementById("chat2").innerHTML =
+              '  <h1 id="lxx" class="font-weight-bolder text-right mt-5 animated fadeInUp"><span id="onlyPdf">æ¥å•¦æ¥å•¦~&nbsp;&nbsp;</span><img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="100" height="100"></h1>\n'
+      setTimeout(upload,600)
+    }
+
+    function upload(){
+      document.getElementById("from_main").classList.add("fadeInUp");
+      document.getElementById("from_main").classList.remove("fade");
+
+    }
+
   </script>
+  <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/animate.min.css">
 </head>
 <body>
+<div id="chat" class="container col-xl-8 col-md-12 col-sm-12">
 
-<h1 class="font-weight-bolder text-center mt-5">ÏòÁõĞ¡ÑôÌá½»Î¢»úÔ­ÀíµÚÁùÕÂ×÷Òµ</h1>
-<div class="col-md-6 col-sm-12 alert-info container my-5"  id="from_main" >
+  <h1 class="font-weight-bolder text-left mt-5 animated fadeInUp"><img src="http://139.9.140.236:8080/LYY/lyy.jpg" class="rounded-circle" alt="" width="100" height="100">&nbsp;&nbsp;å¿«æ¥äº¤å¾®æœºåŸç†ç¬¬å…­ç« ä½œä¸š~</h1>
+  <div id="chat2">
+
+  </div>
+</div>
+<div class="col-xl-8 col-md-12 col-sm-12 alert-info container my-5 animated fade"  id="from_main" >
   <form name="myform" action="UploadServlet" method="post" enctype="multipart/form-data" class="py-3">
-    <input type="text" id="name" name="name" class="form-control mb-3" placeholder="ĞÕÃû"  >
-    <input type="text" id="id" name="id" class="form-control mb-3" placeholder="Á½Î»Ñ§ºÅ"  >
+    <input type="text" id="id" name="id" class="form-control mb-3" placeholder="ä¸¤ä½å­¦å·"  >
     <input type="file" style="visibility: hidden" id="homework" name="homework"><br>
-    <input type="button" id="btn_select" value="ÉÏ´«ÎÄ¼ş£¨²»Òª³¬¹ı10MBÅ¶£©" class="btn btn-success my-2 col-md-12">
+    <button type="button" id="btn_select" class="btn btn-danger my-2 col-md-12" style="font-size: 20px">é€‰æ‹©æ–‡ä»¶ï¼ˆ<img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="30" height="30">ï¼šä¸è¦è¶…è¿‡10MBå“¦ï¼‰</button>
     <span id="file_name"></span>
-    <input type="submit" value="È·ÈÏ£¨Çë×¼È·ÌîĞ´ĞÅÏ¢£©" class="btn btn-danger col-md-12 mt-2" style="line-height: 30px;font-size: 20px" onclick="return isDocx()">
+    <input type="submit" value="ç¡®å®šæäº¤ï¼ˆè¯·å‡†ç¡®å¡«å†™ä¿¡æ¯ï¼‰" class="btn btn-primary col-md-12 mt-2" style="line-height: 33px;font-size: 25px" onclick="return isDocx()">
   </form>
+  
 </div>
 <script>
 

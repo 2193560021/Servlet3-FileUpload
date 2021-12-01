@@ -2,27 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-  <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css">
-  <script src="jquery-1.12.4.min.js"></script>
-  <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+    <title>交作业</title>
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <script src="jquery-1.12.4.min.js"></script>
+    <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+    <style>
+        body,html{
+            height: 100%;
+            background-image: -moz-linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
 
+            background-image: -webkit-linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
+
+            background-image: linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
+        }
+    </style>
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/animate.min.css">
 </head>
-<body class="">
-<div class="w-75 mx-auto text-center">
-  <h1 id="main" class=" font-weight-bolder text-center">等<span id="second">10</span>秒再关，文件正在上传，先吃波🐶粮</h1>
-  <img src="http://139.9.140.236:8080/LX/lxlyy.jpg" class="mx-auto" style="height: 650px;" alt="">
+<body>
+<div id="main" class="container col-xl-8 col-md-12 col-sm-12">
+    <h1 class="font-weight-bolder text-left mt-5"><img src="http://139.9.140.236:8080/LYY/lyy.jpg" class="rounded-circle" alt="" width="100" height="100">&nbsp;&nbsp;快来交微机原理第六章作业~</h1>
+    <h1 class="font-weight-bolder text-right mt-5">来啦来啦~&nbsp;&nbsp;<img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="100" height="100"></h1>
+    <div>
+
+    </div>
+    <h1 id="chat_wait" class="font-weight-bolder text-right mt-5 animated fadeInUp">稍等稍等，文件正在发送中<span id="wait">..</span>&nbsp;&nbsp;<img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="100" height="100"></h1>
+
 </div>
+<span id="second" hidden>3</span>
 <script>
-  window.onload = function (){
-    setInterval(calculate,1000)
-  }
-  function calculate(){
-    document.getElementById("second").innerText = parseInt(parseInt(document.getElementById("second").innerText) - 1);
-    if(document.getElementById("second").innerText == "0"){
-      document.getElementById("main").innerHTML = '<span id="second" hidden></span> 文件上传完毕啦，狗粮也吃完啦，可以关啦'
+    var waitInterval;
+    window.onload = function (){
+        waitInterval = setInterval(wait,500)
+        setInterval(calculate,1000)
     }
-  }
+    function wait(){
+        document.getElementById("wait").innerText += "."
+        if(document.getElementById("wait").innerText == "......."){
+            clearInterval(waitInterval);
+            document.getElementById("chat_wait").classList.remove("animated")
+        }
+    }
+    function calculate(){
+        document.getElementById("second").innerText = parseInt(parseInt(document.getElementById("second").innerText) - 1);
+        if(document.getElementById("second").innerText == "0"){
+            document.getElementById("main").innerHTML +=
+                '    <h1 class="font-weight-bolder text-left mt-5 animated fadeInUp text-success"><img src="http://139.9.140.236:8080/LYY/lyy.jpg" class="rounded-circle" alt="" width="100" height="100">&nbsp;&nbsp;文件已收到❤️，可以关闭页面啦~</h1>\n'
+        }
+    }
 </script>
+
 </body>
 </html>
