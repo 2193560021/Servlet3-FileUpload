@@ -7,37 +7,93 @@
   <script src="jquery-1.12.4.min.js"></script>
   <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
   <style>
+    body,html{
+      height: 100%;
+      background-image: -moz-linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
+
+      background-image: -webkit-linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
+
+      background-image: linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
+    }
     #from_main{
       border-radius: 15px;
     }
   </style>
   <script>
+    window.onload = function (){
+      setTimeout(ani1,800)
+    }
     function isDocx()
     {
       var file=myform.homework.value;
       var ext=file.substring(file.lastIndexOf(".")+1);
+
+      var lxx = document.getElementById("lxx");
+      var onlyPdf = document.getElementById("onlyPdf");
+      if(document.getElementById("id").value == ""){
+
+        lxx.classList.remove("fadeInUp");
+        lxx.classList.add("shake");
+        onlyPdf.classList.add("text-danger");
+        onlyPdf.innerText = '哎呀，没填学号呢~';
+        setTimeout(removeShake,1000)
+        return false;
+      }
+
       //可以再添加允许类型
       if(ext.toLowerCase()=="pdf")
+      {
+        document.getElementById("from_main").classList.remove("fadeInUp");
+        document.getElementById("from_main").classList.add("fadeOutDown");
         return true;
+      }
       else
       {
-        alert("只能上传pdf文档!");
+        lxx.classList.remove("fadeInUp");
+        lxx.classList.add("shake");
+        onlyPdf.classList.add("text-danger");
+        onlyPdf.innerText = '哎呀，只能上传pdf文件呀~';
+        setTimeout(removeShake,1000)
         return false;
       }
     }
+
+    function removeShake(){
+      document.getElementById("lxx").classList.remove("shake");
+    }
+
+    function ani1(){
+      document.getElementById("chat2").innerHTML =
+              '  <h1 id="lxx" class="font-weight-bolder text-right mt-5 animated fadeInUp"><span id="onlyPdf">来啦来啦~&nbsp;&nbsp;</span><img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="100" height="100"></h1>\n'
+      setTimeout(upload,600)
+    }
+
+    function upload(){
+      document.getElementById("from_main").classList.add("fadeInUp");
+      document.getElementById("from_main").classList.remove("fade");
+
+    }
+
   </script>
+  <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/animate.min.css">
 </head>
 <body>
+<div id="chat" class="container col-md-6">
 
-<h1 class="font-weight-bolder text-center mt-5">向刘小阳提交微机原理第六章作业</h1>
-<div class="col-md-6 col-sm-12 alert-info container my-5"  id="from_main" >
+  <h1 class="font-weight-bolder text-left mt-5 animated fadeInUp"><img src="http://139.9.140.236:8080/LYY/lyy.jpg" class="rounded-circle" alt="" width="100" height="100">&nbsp;&nbsp;快来交微机原理第六章作业~</h1>
+  <div id="chat2">
+
+  </div>
+</div>
+<div class="col-md-6 col-sm-12 alert-info container my-5 animated fade"  id="from_main" >
   <form name="myform" action="UploadServlet" method="post" enctype="multipart/form-data" class="py-3">
     <input type="text" id="id" name="id" class="form-control mb-3" placeholder="两位学号"  >
     <input type="file" style="visibility: hidden" id="homework" name="homework"><br>
-    <input type="button" id="btn_select" value="上传文件（不要超过10MB哦）" class="btn btn-success my-2 col-md-12">
+    <button type="button" id="btn_select" class="btn btn-danger my-2 col-md-12" style="font-size: 20px">选择文件（<img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="30" height="30">：不要超过10MB哦）</button>
     <span id="file_name"></span>
-    <input type="submit" value="确认（请准确填写信息）" class="btn btn-danger col-md-12 mt-2" style="line-height: 30px;font-size: 20px" onclick="return isDocx()">
+    <input type="submit" value="确定提交（请准确填写信息）" class="btn btn-primary col-md-12 mt-2" style="line-height: 33px;font-size: 25px" onclick="return isDocx()">
   </form>
+  
 </div>
 <script>
 
