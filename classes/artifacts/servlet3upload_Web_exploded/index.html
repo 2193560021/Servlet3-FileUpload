@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>交作业</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css">
   <script src="jquery-1.12.4.min.js"></script>
   <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
@@ -39,7 +40,7 @@
         setTimeout(removeShake,1000)
         return false;
       }
-
+5
       //可以再添加允许类型
       if(ext.toLowerCase()=="pdf")
       {
@@ -64,7 +65,7 @@
 
     function ani1(){
       document.getElementById("chat2").innerHTML =
-              '  <h1 id="lxx" class="font-weight-bolder text-right mt-5 animated fadeInUp"><span id="onlyPdf">来啦来啦~&nbsp;&nbsp;</span><img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="100" height="100"></h1>\n'
+              '  <h1 id="lxx" class="font-weight-bolder text-right mt-3 animated fadeInUp"><span id="onlyPdf">来啦来啦~&nbsp;&nbsp;</span><img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="100" height="100"></h1>\n'
       setTimeout(upload,600)
     }
 
@@ -80,20 +81,19 @@
 <body>
 <div id="chat" class="container col-xl-8 col-md-12 col-sm-12">
 
-  <h1 class="font-weight-bolder text-left mt-5 animated fadeInUp"><img src="http://139.9.140.236:8080/LYY/lyy.jpg" class="rounded-circle" alt="" width="100" height="100">&nbsp;&nbsp;快来交微机原理第六章作业~</h1>
+  <h1 class="font-weight-bolder text-left mt-3 animated fadeInUp"><img src="http://139.9.140.236:8080/LYY/lyy.jpg" class="rounded-circle" alt="" width="100" height="100">&nbsp;&nbsp;快来交微机原理第六章作业~</h1>
   <div id="chat2">
 
   </div>
 </div>
-<div class="col-xl-8 col-md-12 col-sm-12 alert-info container my-5 animated fade"  id="from_main" >
+<div class="col-xl-5 col-md-10 col-sm-10 alert-info container my-3 animated fade"  id="from_main" >
   <form name="myform" action="UploadServlet" method="post" enctype="multipart/form-data" class="py-3">
     <input type="text" id="id" name="id" class="form-control mb-3" placeholder="两位学号"  >
     <input type="file" style="visibility: hidden" id="homework" name="homework"><br>
     <button type="button" id="btn_select" class="btn btn-danger my-2 col-md-12" style="font-size: 20px">选择文件（<img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="30" height="30">：不要超过10MB哦）</button>
     <span id="file_name"></span>
-    <input type="submit" value="确定提交（请准确填写信息）" class="btn btn-primary col-md-12 mt-2" style="line-height: 33px;font-size: 25px" onclick="return isDocx()">
+    <input type="submit" value="确定提交（请准确填写2位学号）" class="btn btn-primary col-md-12 mt-2" style="line-height: 33px;font-size: 25px" onclick="return isDocx()">
   </form>
-  
 </div>
 <script>
 
