@@ -38,7 +38,6 @@ public class UploadServlet extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
-//        Play play = new Play();
         Part part;
         try
         {
@@ -46,21 +45,16 @@ public class UploadServlet extends HttpServlet
             ServletFileUpload upload = new ServletFileUpload();
             request.setCharacterEncoding("UTF-8");
             upload.setHeaderEncoding("UTF-8");
-    //然后对获取的FileItem执行如下转码方式
             // 接收文本
             String ch6 = "ch6";
             int ID = Integer.parseInt(request.getParameter("id"));
             // 接收图片:图片封装在part对象中
             part = request.getPart("homework");
             String fileName = getFileName(part);
-//            play.setPlayImage(fileName);
             // 保存图片
             part.write(getServletContext().getRealPath("/doc/") + ID + "-ch6.pdf");
             System.out.println(fileName);
             System.out.println(part.getSize());
-
-            // 带着play对象转发到result.java页
-//            request.setAttribute("play", play);
             request.getRequestDispatcher("lxILoveYou.html").forward(request, response);
         }
         catch(Exception e)
@@ -70,9 +64,8 @@ public class UploadServlet extends HttpServlet
                 System.out.println("上传文件过大!");
             }
             request.setAttribute("desc", "上传文件过大(限制10M)，或存在异常!");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("error.html").forward(request, response);
         }
-
     }
 
     /**

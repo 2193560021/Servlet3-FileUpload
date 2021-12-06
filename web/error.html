@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>交作业</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <script src="jquery-1.12.4.min.js"></script>
+    <script src="bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+    <style>
+        body,html{
+            height: 120%;
+            background-image: -moz-linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
+
+            background-image: -webkit-linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
+
+            background-image: linear-gradient(135deg, rgb(194, 255, 234), rgb(158, 176, 255));
+        }
+        #reUpload_h1{
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="bootstrap-4.6.0-dist/css/animate.min.css">
+</head>
+<body>
+<div id="main" class="container col-xl-8 col-md-12 col-sm-12">
+    <h1 class="font-weight-bolder text-left mt-3"><img src="http://139.9.140.236:8080/LYY/lyy.jpg" class="rounded-circle" alt="" width="100" height="100">&nbsp;&nbsp;快来交微机原理第六章作业~</h1>
+    <h1 class="font-weight-bolder text-right mt-3">来啦来啦~&nbsp;&nbsp;<img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="100" height="100"></h1>
+    <h1 id="chat_error" class="font-weight-bolder text-right text-danger mt-3 animated fadeInUp">作业上传失败了，呜呜呜~~~T_T&nbsp;&nbsp;<img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="100" height="100"></h1>
+    <div id="error_reasons"></div>
+    <div id="error_reason1"></div>
+    <div id="error_reason2"></div>
+    <div id="error_reason3"></div>
+    <div id="reUpload"></div>
+
+</div>
+
+<span id="second" hidden>3</span>
+<script>
+    var waitInterval;
+    window.onload = function (){
+        setTimeout(reasons,400)
+    }
+    function reasons(){
+        document.getElementById("error_reasons").innerHTML =
+            '        <h1 class="font-weight-bolder text-left mt-3 animated fadeInUp"><img src="http://139.9.140.236:8080/LYY/lyy.jpg" class="rounded-circle" alt="" width="100" height="100">&nbsp;&nbsp;不哭不哭，失败可能有以下几个原因哦：</h1>\n'
+        setTimeout(reason1,400)
+    }
+
+    function reason1(){
+        document.getElementById("error_reason1").innerHTML =
+            '        <h1 class="font-weight-bolder text-left mt-3 animated fadeInUp"><img src="http://139.9.140.236:8080/LYY/lyy.jpg" class="rounded-circle" alt="" width="100" height="100">&nbsp;&nbsp;1️⃣学号没有输入2位阿拉伯数字</h1>\n'
+        setTimeout(reason2,400)
+    }
+
+    function reason2(){
+
+        document.getElementById("error_reason2").innerHTML =
+            '        <h1 class="font-weight-bolder text-left mt-3 animated fadeInUp"><img src="http://139.9.140.236:8080/LYY/lyy.jpg" class="rounded-circle" alt="" width="100" height="100">&nbsp;&nbsp;2️⃣上传文件大小超过10MB</h1>\n'
+        setTimeout(reason3,400)
+    }
+    function reason3(){
+        document.getElementById("error_reason3").innerHTML =
+            '        <h1 class="font-weight-bolder text-left mt-3 animated fadeInUp"><img src="http://139.9.140.236:8080/LYY/lyy.jpg" class="rounded-circle" alt="" width="100" height="100">&nbsp;&nbsp;3️⃣如果依旧失败的话，Q我哦~</h1>\n'
+        setTimeout(reUpload,600)
+    }
+    function reUpload(){
+        document.getElementById("reUpload").innerHTML =
+            '    <h1 id="reUpload_h1" class="font-weight-bolder text-right text-danger mt-3 animated fadeInUp">好吧，点这里重新上传~~~T_T&nbsp;&nbsp;<img src="http://139.9.140.236:8080/LX/lx.jpg" class="rounded-circle" alt="" width="100" height="100"></h1>\n'
+    }
+</script>
+
+</body>
+</html>
