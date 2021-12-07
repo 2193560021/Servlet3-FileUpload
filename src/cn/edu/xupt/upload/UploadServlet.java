@@ -62,6 +62,8 @@ public class UploadServlet extends HttpServlet
             if(config.maxRequestSize() == -1L || config.maxFileSize() == -1L)
             {
                 System.out.println("上传文件过大!");
+
+                request.getRequestDispatcher("error.html").forward(request, response);
             }
             request.setAttribute("desc", "上传文件过大(限制10M)，或存在异常!");
             request.getRequestDispatcher("error.html").forward(request, response);
